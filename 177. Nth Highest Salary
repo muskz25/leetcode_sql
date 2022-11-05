@@ -1,0 +1,18 @@
+HERE if N=2 THEN Second Highest salary will be Displayed
+
+First Select Column by SELECT salary
+Now SELECT DISTINCT salary because we don't want repeating value.
+Arrange Salary in descending Order So we have Higest salary at TOP
+Now we Only one row as output SO LIMIT 1
+Now OFFSET it display N+1 row Example. if n=2 then it will show Third Highest Salary Therefore N=N-1 is used.
+
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+BEGIN
+
+SET N=N-1;
+
+  RETURN (
+      SELECT DISTINCT salary FROM Employee ORDER BY salary DESC 
+      LIMIT 1 OFFSET N      
+  );
+END
